@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.map.assignment.ui.MapViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MapViewActivity">
+
+        <View
+            android:id="@+id/source_dot"
+            android:layout_width="@dimen/dimen_10dp"
+            android:layout_height="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:background="@drawable/source_circle"
+            app:layout_constraintBottom_toBottomOf="@id/source_et"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/source_et"
+            app:layout_constraintTop_toTopOf="@id/source_et"></View>
+
+        <EditText
+            android:id="@+id/source_et"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/edittext_height_50dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_16dp"
+            android:background="@drawable/edittext_background_circle"
+            android:hint="@string/source_hint"
+            android:inputType="none"
+            android:padding="@dimen/edittext_padding_8dp"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            app:layout_constraintLeft_toRightOf="@id/source_dot"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{viewModel::searchForSource}"
+            />
+
+
+        <View
+            android:id="@+id/destination_dot"
+            android:layout_width="@dimen/dimen_10dp"
+            android:layout_height="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:background="@drawable/destination_circle"
+            app:layout_constraintBottom_toBottomOf="@id/destination_et"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/destination_et"
+            app:layout_constraintTop_toTopOf="@id/destination_et"></View>
+
+        <EditText
+            android:id="@+id/destination_et"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/edittext_height_50dp"
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_16dp"
+            android:background="@drawable/edittext_background_circle"
+            android:hint="Destination"
+            android:inputType="none"
+            android:padding="@dimen/edittext_padding_8dp"
+            android:layout_marginBottom="@dimen/dimen_20dp"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            app:layout_constraintLeft_toRightOf="@id/destination_dot"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/source_et"
+            android:onClick="@{viewModel::searchForDestination}"
+            />
+
+        <Button
+            android:id="@+id/save_btn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height_40dp"
+            app:layout_constraintHorizontal_weight = "1"
+            app:layout_constraintTop_toBottomOf="@id/destination_et"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/previous_btn"
+            android:layout_marginLeft="@dimen/dimen_40dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            app:layout_constraintBottom_toTopOf="@id/map_fragment_container"
+            android:background="@color/button_0091EA"
+            android:text="@string/save_title"
+            android:textColor="@android:color/white"
+            android:onClick="@{viewModel::saveClickListener}"
+            />
+
+        <Button
+            android:id="@+id/previous_btn"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height_40dp"
+            app:layout_constraintHorizontal_weight = "1"
+            app:layout_constraintTop_toTopOf="@id/save_btn"
+            app:layout_constraintBottom_toBottomOf="@id/save_btn"
+            app:layout_constraintLeft_toRightOf="@id/save_btn"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="@dimen/dimen_20dp"
+            android:background="@color/button_E65100"
+            android:text="@string/previous_title"
+            android:textColor="@android:color/white"
+            android:onClick="@{viewModel::displayPreviousClickListener}"
+            />
+
+        <FrameLayout
+            android:id="@+id/map_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/save_btn"></FrameLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
